@@ -1,13 +1,36 @@
 #include <iostream>
-#include <string>
 using namespace std;
-int main() {
-    string hola = "Hola";
-    string mundo = " Mundo";
-    
-    cout << hola << mundo << endl;
-    
-    
-    
+
+int main () {
+
+int numero, cont;
+
+    cin >> numero;
+
+
+
+    if(numero % 2 ==0){
+   
+        cont = numero;
+
+        while(numero != 0){
+            numero = numero -2;
+            cont = cont + numero;
+        }
+        cout << cont;
+    }
+
+    else{
+   
+        cont = numero;
+
+        while(numero != 0){
+            numero = numero -2;
+            cont =  cont + numero;
+        }
+        cout << cont;
+    }
+
+
     return 0;
 }
