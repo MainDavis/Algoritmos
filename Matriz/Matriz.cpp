@@ -6,63 +6,144 @@
 
 //Metodos de la matriz
 
-Matriz::Matriz(int filas=0, int columnas=0){
-		this->n_filas = filas;
-		this->n_columnas = columnas;
+Matriz::Matriz(int filas, int columnas){
+	this->n_filas = filas;
+	this->n_columnas = columnas;
 
+	if(filas==0 || columnas==0){
+		this->matriz=NULL;
+	}else{
 		this->matriz = new double*[n_filas];
 		for(int i=0; i<n_filas; i++)
-      matriz[i] = new double[n_columnas];
-	}
+   		matriz[i] = new double[n_columnas];
+	}	
+}
 
 Matriz::Matriz(const Matriz &m){
-				this->n_filas = m.n_filas;
-				this->n_columnas = m.n_columnas;
-				this->datosMatriz = m.datosMatriz;
-			}
+	this->n_filas = m.n_filas;
+	this->n_columnas = m.n_columnas;
+	this->matriz = m.matriz;
+}
 			
 Matriz::~Matriz(){
-				for(int i=0; i<n_filas;i++)
-					delete[] this->datosMatriz[i];
-				delete[] this->datosMatriz;
-			}
+	for(int i=0; i<n_filas;i++)
+		delete[] this->matriz[i];
+	delete[] this->matriz;
+}
 
 Matriz Matriz::operator + (const Matriz &m2){
-        assertdomjudge( (this->n_filas == m2.n_filas) && (this->n_columnas == m2.n_columnas) );
+    assertdomjudge( (this->n_filas == m2.n_filas) && (this->n_columnas == m2.n_columnas) );
 
-				Matrix m3;
-				m3.n_filas = this->n_filas;
-				m3.n_columnas = this->n_columnas;
-				m3.datosMatriz = this->datosMatriz;
+	Matriz m3(this->n_filas, this->n_columnas);
 				
-				for(int i=0; i<this->n_filas; i++){
-					for(int j=0; j<this->n_columnas; j++)
-						m3.datosMatriz[i][j] = this->datosMatriz[i][j] + m2.datosMatriz[i][j];
-				}				
-				return m3;
-			}
+	for(int i=0; i<this->n_filas; i++){
+		for(int j=0; j<this->n_columnas; j++)
+			m3.matriz[i][j] = this->matriz[i][j] + m2.matriz[i][j];
+		}				
+	return m3;
+}
 
 Matriz Matriz::operator - (const Matriz &m2){
-        assertdomjudge( (this->n_filas == m2.n_filas) && (this->n_columnas == m2.n_columnas) );
+    assertdomjudge( (this->n_filas == m2.n_filas) && (this->n_columnas == m2.n_columnas) );
 
-				Matrix m3;
-				m3.n_filas = this->n_filas;
-				m3.n_columnas = this->n_columnas;
-				m3.datosMatriz = this->datosMatriz;
+	Matriz m3;
+	m3.n_filas = this->n_filas;
+	m3.n_columnas = this->n_columnas;
+	m3.matriz = this->matriz;
 				
-				for(int i=0; i<this->n_filas; i++){
-					for(int j=0; j<this->n_columnas; j++)
-						m3.datosMatriz[i][j] = this->datosMatriz[i][j] - m2.datosMatriz[i][j];
-				}				
-				return m3;
+	for(int i=0; i<this->n_filas; i++){
+		for(int j=0; j<this->n_columnas; j++)
+			m3.matriz[i][j] = this->matriz[i][j] - m2.matriz[i][j];
+	}				
+	return m3;
+}
+
+Matriz Matriz::operator * (const Matriz &m2){
+	assertdomjudge(this->n_columnas == m2.n_filas);
+	Matriz m3(this->n_filas, m2.n_columnas);
+
+	double suma=0;
+	
+	for(int i=0; i<this->n_filas; i++){
+		for(int j=0; j<m2.n_columnas; j++){
+
+			for(int k=0; k<this->n_columnas; k++){
+				suma += matriz[i][k] * m2.matriz[k][j];
 			}
+
+			m3.matriz[i][j] = suma;
+			suma=0;
+		}
+	}
+	
+	return m3;
+}
 			
-Matriz Matriz::operator * (Matriz m2){
-				Matrix m3;
-				m3.n_filas = this.n
+Matriz Matriz::operator * (double number){
+	Matriz m3;
+	m3.n_filas = this->n_filas;
+	m3.n_columnas = this->n_columnas;
+	m3.matriz = this->matriz;
 				
-				
+	for(int i=0; i<this->n_filas; i++){
+		for(int j=0; j<this->n_columnas; j++)
+			m3.matriz[i][j] = this->matriz[i][j] * number;
+	}				
+	return m3;							
+}
+		
+			
+double Matriz::obtenerMaximo(){
+	double maximo=0;
+	
+	for(int i=0; i<this->n_filas; i++){
+		for(int j=0; j<this->n_columnas; j++){
+			if(this->matriz[i][j] > maximo)
+				maximo = this->matriz[i][j];
+		}
+	}
+	
+	return maximo;	
+}
+
+double Matriz::obtenerMinimo(){
+	double minimo=this->matriz[0][0];
+	
+	for(int i=0; i<this->n_filas; i++){
+		for(int j=0; j<this->n_columnas; j++){
+			if(this->matriz[i][j] < minimo)
+				minimo = this->matriz[i][j];
+		}
+	}
+	
+	return minimo;
+}
+
+Matriz Matriz::calcularTraspuesta(){
+	Matriz m3(this->n_columnas, this->n_filas);
+
+	for(int i=0; i<this->n_columnas; i++){
+		for(int j=0; j<this->n_filas; j++){
+			m3.matriz[i][j] = this->matriz[j][i];
+		}
+	}
+
+	return m3;
+}
+
+bool Matriz::esSimetrica(){
+	assertdomjudge(this->n_filas == this->n_columnas);
+	
+	for(int i=this->n_filas-1; i>0; i--){
+		for(int j=(this->n_columnas-2); j>-1; j--){
+			if(this->matriz[i][j] != this->matriz[j][i]){
+				return false;
 			}
+		}
+	}
+
+	return true;
+}
 
 
 //Asignacion de matrices

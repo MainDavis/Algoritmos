@@ -67,7 +67,7 @@ int main()
 	  break;
 	case '>':
 	  cout<<"Maximo de A: ";
-	  cout<<a.obtenerMaximo();	
+	  cout<<a.obtenerMaximo();
 	  cout<<endl;
 	  break;
 	case '<':
@@ -84,6 +84,7 @@ int main()
 	  cout<<"C=At"<<endl;
 	  c=a.calcularTraspuesta();
 	  break;
+
 	case 'F':
 	  cout<<"FIN"<<endl;
 	  break;
