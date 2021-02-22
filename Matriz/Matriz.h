@@ -15,8 +15,8 @@ class Matriz {
 		Parámetro: Filas y columnas de la matriz que se va a crear.
 		Retorno: Ninguno.
 		Precondicion: Ninguno.
-		Complejidad Temporal:
-		Complejidad Espacial:
+		Complejidad Temporal: O(n_filas)
+		Complejidad Espacial: O(n_filas*n_columnas)
 	*/
 
 
@@ -27,8 +27,8 @@ class Matriz {
 		Parámetro: Objeto que se quiere copiar.
 		Retorno: Ninguno.
 		Precondicion: Ninguno.
-		Complejidad Temporal:
-		Complejidad Espacial:
+		Complejidad Temporal: O(1)
+		Complejidad Espacial: O(n_filas*n_columnas)
 	*/
 
 
@@ -39,8 +39,8 @@ class Matriz {
 		Parámetro: Ninguno.
 		Retorno: Ninguno.
 		Precondicion: Ninguno.
-		Complejidad Temporal:
-		Complejidad Espacial:
+		Complejidad Temporal: O(n_filas)
+		Complejidad Espacial: O(1)
 	*/
 
 
@@ -51,8 +51,8 @@ class Matriz {
 		Parámetro: Matriz que se quiere sumar.
 		Retorno: Matriz resultado de la suma.
 		Precondicion: El número de filas y columnas de las dos matrices deben ser iguales.
-		Complejidad Temporal:
-		Complejidad Espacial:
+		Complejidad Temporal: O(n_filas*n_columnas)
+		Complejidad Espacial: O(n_filas*n_columnas)
 	*/
 
 
@@ -63,8 +63,8 @@ class Matriz {
 		Parámetro: Matriz que se quiere restar.
 		Retorno: Matriz resultado de la resta.
 		Precondicion: El número de filas y columnas de las dos matrices deben ser iguales.
-		Complejidad Temporal:
-		Complejidad Espacial:
+		Complejidad Temporal: O(n_filas*n_columnas)
+		Complejidad Espacial: O(n_filas*n_columnas)
 	*/
 
 
@@ -75,8 +75,8 @@ class Matriz {
 		Parámetro: Matriz que se quiere multiplicar.
 		Retorno: Matriz resultado de la multiplicación.
 		Precondicion: El número de columnas de la matriz principal debe ser igual al número de filas de la dada.
-		Complejidad Temporal:
-		Complejidad Espacial:
+		Complejidad Temporal: O(n_filas*n_columnas*m2.n_columnas)
+		Complejidad Espacial: O(n_filas*m2.n_columnas)
 	*/
 
 
@@ -87,8 +87,8 @@ class Matriz {
 		Parámetro: Número por el que se quiere multiplicar.
 		Retorno: Matriz resultado de la multiplicación.
 		Precondicion: Ninguna.
-		Complejidad Temporal:
-		Complejidad Espacial:
+		Complejidad Temporal: O(n_filas*n_columnas)
+		Complejidad Espacial: O(n_filas*n_columnas)
 	*/
 
 
@@ -99,8 +99,8 @@ class Matriz {
 		Parámetro: Ninguno.
 		Retorno: Mayor número de la matriz.
 		Precondicion: Ninguna.
-		Complejidad Temporal:
-		Complejidad Espacial:
+		Complejidad Temporal: O(n_filas*n_columnas)
+		Complejidad Espacial: O(1)
 	*/
 
 
@@ -110,9 +110,9 @@ class Matriz {
 	/* Busca el valor más bajo de la matriz y lo retorna.
 		Parámetro: Ninguno.
 		Retorno: Menor número de la matriz.
-		Precondicion: Ninguna.
-		Complejidad Temporal:
-		Complejidad Espacial:
+		Precondicion: Tanto las filas como las columnas tiene que ser mayor que 0.
+		Complejidad Temporal: O(n_filas*n_columnas)
+		Complejidad Espacial: O(1)
 	*/
 
 
@@ -122,9 +122,9 @@ class Matriz {
 	/* Calcula la matriz traspuesta. Crea una nueva matriz con el resultado.
 		Parámetro: Ninguno.
 		Retorno: Matriz traspuesta.
-		Precondicion: Ninguna.
-		Complejidad Temporal:
-		Complejidad Espacial:
+		Precondicion: Tanto las filas como las columnas tiene que ser mayor que 0.
+		Complejidad Temporal: O(n_filas*n_columnas)
+		Complejidad Espacial: O(n_filas*n_columnas)
 	*/
 
 
@@ -135,8 +135,8 @@ class Matriz {
 		Parámetro: Ninguno.
 		Retorno: Boolean dependiendo de si es simétrica (true) o no (false).
 		Precondicion: Debe ser una matriz cuadrada (n_filas == n_columnas).
-		Complejidad Temporal:
-		Complejidad Espacial:
+		Complejidad Temporal: O(n_filas*n_columnas)
+		Complejidad Espacial: O(1)
 	*/
 
 

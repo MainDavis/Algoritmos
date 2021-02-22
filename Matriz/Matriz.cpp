@@ -6,18 +6,19 @@
 
 //Metodos de la matriz
 
-Matriz::Matriz(int filas, int columnas){
-	this->n_filas = filas;
-	this->n_columnas = columnas;
+Matriz::Matriz(int filas, int columnas){ 	
 
-	if(filas==0 || columnas==0){
-		this->matriz=NULL;
+	this->n_filas = filas;								
+	this->n_columnas = columnas;						
+
+	if(filas==0 || columnas==0){						
+		this->matriz=NULL;								
 	}else{
-		this->matriz = new double*[n_filas];
+		this->matriz = new double*[n_filas];			
 		for(int i=0; i<n_filas; i++)
-   		matriz[i] = new double[n_columnas];
+   			matriz[i] = new double[n_columnas];				
 	}	
-}
+}														
 
 Matriz::Matriz(const Matriz &m){
 	this->n_filas = m.n_filas;
@@ -39,17 +40,15 @@ Matriz Matriz::operator + (const Matriz &m2){
 	for(int i=0; i<this->n_filas; i++){
 		for(int j=0; j<this->n_columnas; j++)
 			m3.matriz[i][j] = this->matriz[i][j] + m2.matriz[i][j];
-		}				
+	}		
+
 	return m3;
 }
 
 Matriz Matriz::operator - (const Matriz &m2){
     assertdomjudge( (this->n_filas == m2.n_filas) && (this->n_columnas == m2.n_columnas) );
 
-	Matriz m3;
-	m3.n_filas = this->n_filas;
-	m3.n_columnas = this->n_columnas;
-	m3.matriz = this->matriz;
+	Matriz m3(this->n_filas, this->n_columnas);
 				
 	for(int i=0; i<this->n_filas; i++){
 		for(int j=0; j<this->n_columnas; j++)
@@ -80,10 +79,7 @@ Matriz Matriz::operator * (const Matriz &m2){
 }
 			
 Matriz Matriz::operator * (double number){
-	Matriz m3;
-	m3.n_filas = this->n_filas;
-	m3.n_columnas = this->n_columnas;
-	m3.matriz = this->matriz;
+	Matriz m3(this->n_filas, this->n_columnas);
 				
 	for(int i=0; i<this->n_filas; i++){
 		for(int j=0; j<this->n_columnas; j++)
@@ -94,6 +90,7 @@ Matriz Matriz::operator * (double number){
 		
 			
 double Matriz::obtenerMaximo(){
+	assertdomjudge(this->n_filas > 0 && this->n_columnas>0);
 	double maximo=0;
 	
 	for(int i=0; i<this->n_filas; i++){
@@ -107,6 +104,7 @@ double Matriz::obtenerMaximo(){
 }
 
 double Matriz::obtenerMinimo(){
+	assertdomjudge(this->n_filas > 0 && this->n_columnas>0);
 	double minimo=this->matriz[0][0];
 	
 	for(int i=0; i<this->n_filas; i++){
