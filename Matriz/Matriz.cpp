@@ -20,6 +20,7 @@ Matriz::Matriz(int filas, int columnas){
 }
 
 Matriz::Matriz(const Matriz &m){
+	//Hay que crear una nueva matriz, como estoy igualando el puntero, si cambio uno se cambian los dos
 	this->n_filas = m.n_filas;
 	this->n_columnas = m.n_columnas;
 	this->matriz = m.matriz;
@@ -35,7 +36,7 @@ Matriz Matriz::operator + (const Matriz &m2){
     assertdomjudge( (this->n_filas == m2.n_filas) && (this->n_columnas == m2.n_columnas) );
 
 	Matriz m3(this->n_filas, this->n_columnas);
-				
+					
 	for(int i=0; i<this->n_filas; i++){
 		for(int j=0; j<this->n_columnas; j++)
 			m3.matriz[i][j] = this->matriz[i][j] + m2.matriz[i][j];
