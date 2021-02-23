@@ -18,6 +18,7 @@ int main(int argc, char** argv) {
 	
 	cin >> n;
 	arr = new int[n];
+
 	for(int i=0; i<n; i++)
 		cin >> arr[i];
 	
@@ -33,13 +34,7 @@ void ordenar(int arr[], int n){
 		temp = arr[i];
 
 		for(j=i-1; (arr[j] > temp) && (j > -1); j--)
-			cout<<"[LEGAL]";
-			//arr[j+1] = arr[j];
-		cout << "\n";
-		
-		for(int j=0; j<i; j++)
-			cout<<"[FULL ILEGAL]";
-		cout << "\n";		
+			arr[j+1] = arr[j];
 		
 		arr[j+1] = temp;
 		
