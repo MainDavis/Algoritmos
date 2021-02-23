@@ -4,7 +4,8 @@ using namespace std;
 
 /*
 	Descripción: Ordena el array de menor a mayor.
-	Orden temporal: O().
+	Complejidad temporal: T( [n^2/2] + [n/2] + 1).
+	Orden temporal: O(n^2).
 	Orden espacial: O(1).
 	Precondición: Ninguna.
 */
@@ -27,21 +28,20 @@ int main(int argc, char** argv) {
 
 void ordenar(int arr[], int n){
 	
-	int temp, posMin;
+	int temp, j;
 	for(int i=1; i<n; i++){
-		posMin=i;
-		for(int j=i-1; j>-1; j--){
-			if(arr[i]<arr[j]){
-				posMin = j;
-			}
-		}
+		temp = arr[i];
 
-		//Hago el cambio;
-		for(int k=i; k>posMin; k--){
-			temp = arr[k];
-			arr[k] = arr[k-1];
-			arr[k-1] = temp;
-		}
+		for(j=i-1; (arr[j] > temp) && (j > -1); j--)
+			cout<<"[LEGAL]";
+			//arr[j+1] = arr[j];
+		cout << "\n";
+		
+		for(int j=0; j<i; j++)
+			cout<<"[FULL ILEGAL]";
+		cout << "\n";		
+		
+		arr[j+1] = temp;
 		
 		for(int k=0;k<n;k++)
 			cout<<arr[k]<<" ";

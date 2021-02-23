@@ -2,6 +2,14 @@
 
 using namespace std;
 
+/*
+	Descripción: Ordena el array de menor a mayor.
+	Complejidad temporal: T( [n^2/2] + [n/2] + 1).
+	Orden temporal: O(n^2).
+	Orden espacial: O(1).
+	Precondición: Ninguna.
+*/
+
 void ordenar(int arr[], int n);
 
 int main(int argc, char** argv) {
