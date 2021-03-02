@@ -1,36 +1,28 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-int main () {
-
-int numero, cont;
-
-    cin >> numero;
-
-
-
-    if(numero % 2 ==0){
-   
-        cont = numero;
-
-        while(numero != 0){
-            numero = numero -2;
-            cont = cont + numero;
-        }
-        cout << cont;
+int fact(int n){
+    if(n < 0){
+        return 0;
+    }else if((n == 1) || (n==0)){
+        return 1;
+    }else{
+        return (n*fact(n-1));
     }
+}
 
-    else{
-   
-        cont = numero;
+int c(int n, int r){ 
+  return (fact(n)/(fact(r)*fact(n-r)));    
+}
 
-        while(numero != 0){
-            numero = numero -2;
-            cont =  cont + numero;
-        }
-        cout << cont;
+
+int main(){
+    int n , r;
+    cin >> n >> r;
+    if((n < 0) || (r < 0)){
+        cout << "ERROR" << endl;
+        return 0;
     }
-
-
-    return 0;
+    cout <<  c(n,r) << endl;
+return 0;
 }
