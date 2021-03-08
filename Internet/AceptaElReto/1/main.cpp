@@ -15,20 +15,19 @@ int main(int argc, char** argv) {
 	while(n != 0){
 		int max;
 		cin >> max;
+		int sum=0;
 		for(int i=1; i<n; i++){
 			int x; cin >> x;
 			v.push_back(x);
-			max = (x>max) ? x : max;
-		}
+			if(x>max){
+				sum += (i)*(x-max);
+				max=x;
+			}else{
+				sum += (max-x);
+			}
+		}		
+		cout << sum << "\n";	
 		
-		int sum=0;
-	
-		for(auto& it : v){
-			sum+=max-it;
-		}
-		
-			
-		cout << sum << "\n";
 		v.clear();
 		cin >> n;
 	}
