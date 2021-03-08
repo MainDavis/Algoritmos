@@ -1,28 +1,14 @@
 #include<iostream>
 using namespace std;
 
-int fact(int n){
-    if(n < 0){
-        return 0;
-    }else if((n == 1) || (n==0)){
-        return 1;
-    }else{
-        return (n*fact(n-1));
-    }
-}
-
-int c(int n, int r){ 
-  return (fact(n)/(fact(r)*fact(n-r)));    
-}
-
+void imprimir(int arr[]);
 
 int main(){
-    int n , r;
-    cin >> n >> r;
-    if((n < 0) || (r < 0)){
-        cout << "ERROR" << endl;
-        return 0;
-    }
-    cout <<  c(n,r) << endl;
+    int n[10] = {1,2,3,4,5,6,7,8,9,0};
+    imprimir(n+1);
 return 0;
+}
+
+void imprimir(int arr[]){
+	cout << arr[0];
 }
