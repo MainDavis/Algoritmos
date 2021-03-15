@@ -34,14 +34,11 @@ int main(int argc, char** argv) {
 void calcTabla(int **arr, int n){
 	for(int r=0; r<n+1; r++){
 		
-		if(r==0){
-			
-			arr[n][r]=1;	
-		} 
+		if(r==0) arr[n][r]=1;	
 		else if(r==n) arr[n][r]=1;
-		else{
-			arr[n][r] = arr[n-1][r-1] + arr[n-1][r];
-		}
+		else arr[n][r] = arr[n-1][r-1] + arr[n-1][r];
+
 	}
+	
 	if(n<MAX_TABLA-1) calcTabla(arr, n+1);
 }

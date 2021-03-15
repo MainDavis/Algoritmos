@@ -1,6 +1,15 @@
 #include<iostream>
 using namespace std;
 
+/*
+    Descripción: Combina dos arrays de menor a mayor.
+    Complejidad temporal: T(n) = n.
+    Orden temporal: O(n).
+	Complejidad espacial: M(1);
+    Orden espacial: O(1).
+    Precondición: Ninguna.
+*/
+
 void  combinar (int a[ ] , int len_a , int b[ ] , int len_b , int c[ ])
 {
 	int posA=0,posB=0;
@@ -23,10 +32,18 @@ void  combinar (int a[ ] , int len_a , int b[ ] , int len_b , int c[ ])
 	}
 }
 
+/*
+    Descripción: Ordena de menor a mayor una lista de números.
+    Complejidad temporal: T(n) = 2T(n/2) + n + 1.
+    Orden temporal: O(nlogn).
+	Complejidad espacial: M(n) = n.
+    Orden espacial: O(n).
+    Precondición: len > 0.
+*/
 
 void ordenarMergeSort (int x[], int len)
 {
-	int temp[len];
+	
 	int mitad = len/2;
 	if(len == 1) {
 		return;
@@ -34,7 +51,7 @@ void ordenarMergeSort (int x[], int len)
     	/*Ordenar dos mitades */    	
 		ordenarMergeSort(x, mitad);
 		ordenarMergeSort(x+mitad, len-mitad);
-    			    	
+    	int temp[len]; 	
       	/*Combinar ambas mitades y guar;darlo en temp */
 		combinar(x, mitad, x+(mitad), (len-mitad), temp);
       	/*Copiar del array temporal al array resultado */
