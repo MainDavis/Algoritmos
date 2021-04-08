@@ -82,22 +82,11 @@ void ListaContigua::concatenar(ListaContigua *lista){
 
 int ListaContigua::buscar(int elementoABuscar){
 	assertdomjudge(n>0);
-	int max=n-1;
-	int min=0;
-	int mid=(max+min)/2;
 
-	while(min<=max){
-		if(this->vector[mid] == elementoABuscar){
-			return mid;
-		}else if(this->vector[mid] < elementoABuscar){
-			min=mid+1;
-		}else if(this->vector[mid] > elementoABuscar){
-			max=mid-1;
-		}
-		mid = (max+min)/2;
-	}
-
+	for(int i=0; i<n; i++)
+		if( *(this->vector+i) == elementoABuscar) return i;
 	return -1;
+
 }
 
 

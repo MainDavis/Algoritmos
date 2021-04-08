@@ -28,7 +28,7 @@ Nodo* ListaEnlazada::getNodo(int posicion){
 
 ListaEnlazada::~ListaEnlazada(){
 	Nodo *actual = lista;
-	for(int i=0; i<0; i++){
+	for(int i=0; actual!=NULL; i++){
 		Nodo *siguiente = actual->siguienteNodo;
 		delete actual;
 		actual = siguiente;
@@ -105,15 +105,20 @@ void ListaEnlazada::eliminar(int posicion){
 void ListaEnlazada::concatenar(ListaEnlazada *listaAConcatenar){
 	assertdomjudge(listaAConcatenar->n > 0);
 
-	getNodo(n-1)->siguienteNodo = listaAConcatenar->lista;
+	Nodo *temp;
+	temp=lista;
+
+	for(int i=0; i<n-1; i++)
+		temp=temp->siguienteNodo;
+
+	temp->siguienteNodo = listaAConcatenar->lista;
 
 	n+=listaAConcatenar->n;
 }
 
-int ListaEnlazada::buscar(int elementoABuscar){
+int ListaEnlazada::buscar(int elementoABuscar){ //Cambiar
 	assertdomjudge( n > 0 );
 
-	int max=0;
 	Nodo *actual = lista;
 	
 	for(int i=0; i<n; i++){
