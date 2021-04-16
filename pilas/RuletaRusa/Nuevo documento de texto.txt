@@ -1,0 +1,4 @@
+Ruleta:
+
+getNodo pero para los dos lados
+Hacer delete 
