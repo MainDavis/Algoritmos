@@ -22,11 +22,9 @@ public:
 	void insertar (int posicion, string nuevoValor);
 
 	void eliminar (int posicion);
-
-
+	
 	void girar (int p);
 
-	
 	~ListaCircular();
 
 };

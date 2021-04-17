@@ -7,16 +7,31 @@ ListaCircular::ListaCircular(){
 }
 
 ListaCircular::~ListaCircular(){
-
+    
+    Nodo *temp = new Nodo();
+    
+    while(lista!=NULL){
+        temp = lista;
+        lista=lista->siguienteNodo;
+        delete temp;
+    }
 }
 
 Nodo *ListaCircular::getNodo(int posicion){
     
     Nodo *temp = new Nodo();
     temp = lista;
-    for(int i=0; i<posicion; i++){
-        temp = temp->siguienteNodo;
+
+    if(posicion > n/2){
+        for(int i=0; i<n-posicion; i++){
+            temp = temp->anteriorNodo;
+        }
+    }else{
+        for(int i=0; i<posicion; i++){
+            temp = temp->siguienteNodo;
+        }
     }
+    
     return temp;
 }
 
@@ -79,31 +94,22 @@ string ListaCircular::getValor(int posicion){
     string valor;
     valor = getNodo(posicion)->elemento;
 
-    //this->eliminar(0);
-
     return valor;
 }
 
 void ListaCircular::eliminar(int posicion){
 
+    Nodo *temp = new Nodo();
+
     if(posicion==0){
+        temp = lista;
         lista->anteriorNodo->siguienteNodo = lista->siguienteNodo;
         lista->siguienteNodo->anteriorNodo = lista->anteriorNodo;
         lista = lista->siguienteNodo;
+        delete temp;
     }
     n--;
 
 }
 
-
-
-/* 
-void ListaCircular::imprimir(){
-    Nodo *temp = new Nodo();
-    temp = lista;
-    for(int i=0; i<n; i++){
-        cout << temp->elemento << "-";
-        temp = temp->siguienteNodo;
-    }
-} */
 
