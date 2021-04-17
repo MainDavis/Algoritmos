@@ -7,11 +7,9 @@ void Hanoi(int n,Pila *origen,Pila *destino,Pila *temporal)
 {
   assertdomjudge(n>0);
   if(n==1){
-    //Mover el bloque desde Origen a Destino
     destino->apilar(origen->desapilar());
   }else{
     Hanoi(n-1,origen, temporal, destino);
-    //Mover el bloque desde Origen a Destino
     destino->apilar(origen->desapilar());
     Hanoi(n-1, temporal, destino, origen);
   }

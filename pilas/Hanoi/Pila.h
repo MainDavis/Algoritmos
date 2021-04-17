@@ -10,6 +10,7 @@ class Pila
   string name;
  public:
   Pila(string name);
+  ~Pila();
   string nombrePila();
   void apilar(int num); 
   int desapilar();

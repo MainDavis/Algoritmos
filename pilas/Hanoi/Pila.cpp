@@ -8,6 +8,17 @@ Pila::Pila(string name)
   this->cima = NULL;
 }
 
+Pila::~Pila(){
+
+  Nodo *temp;
+
+  while(cima!=NULL){
+    temp=cima;
+    cima = cima->siguiente;
+    delete temp;
+  }
+}
+
 std::string Pila::nombrePila()
 {
   return this->name;
