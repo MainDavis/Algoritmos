@@ -6,6 +6,10 @@ Supermercado::Supermercado(int n=1){
     this->n_cajas = n;
 }
 
+Supermercado::~Supermercado(){
+    delete [] this->cajas;
+}
+
 void Supermercado::nuevoUsuario(int n, int id){
     this->cajas[n].encolar(id);
 }

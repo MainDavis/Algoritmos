@@ -7,6 +7,7 @@ private:
   int n_cajas;
 public:
   Supermercado(int n);
+  ~Supermercado();
   void nuevoUsuario(int n,int id);  
   void cerrarCaja(int n);  
   int atenderUsuario(int n);

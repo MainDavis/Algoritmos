@@ -6,6 +6,7 @@ class Cola
   Nodo *final;
  public:
   Cola();
+  ~Cola();
   void encolar(int num);  
   int desencolar();
   bool estaVacia();  

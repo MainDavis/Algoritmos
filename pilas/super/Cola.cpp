@@ -6,6 +6,16 @@ Cola::Cola(){
     this->final = NULL;    
 }
 
+Cola::~Cola(){
+    Nodo *temp;
+
+    while(principio!=NULL){
+        temp=principio;
+        principio=principio->siguiente;
+        delete temp;
+    }
+}
+
 void Cola::encolar(int num){
     Nodo *cliente = new Nodo(num);
 
