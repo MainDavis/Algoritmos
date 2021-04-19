@@ -1,8 +1,7 @@
 public class JuguetesAmerica implements JugueteFactory{
 
     public Monopoli creaMonopoli(){
-
-        Monopoli juguete = new MonopoliAmerica("5cm","B");
+        Monopoli juguete = new MonopoliAmerica("25cm","B");
         return juguete;
     }
 

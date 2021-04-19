@@ -1,5 +1,5 @@
 public class MonopoliAmerica implements Monopoli{
-    final String pieza, ficha;
+    private final String pieza, ficha;
 
     MonopoliAmerica(String pieza, String ficha){
         this.pieza = pieza;
