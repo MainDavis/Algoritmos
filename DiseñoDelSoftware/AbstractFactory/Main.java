@@ -1,7 +1,5 @@
 public class Main{
     public static void main(String[] argv){
-
-        System.out.println("Hey");
         
         JugueteFactory america = new JuguetesAmerica();
         JugueteFactory europa = new JuguetesEuropa();
