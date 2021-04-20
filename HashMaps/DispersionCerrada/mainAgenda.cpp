@@ -1,6 +1,7 @@
 #include <iostream>
 #include<string>
 #include "Agenda.h"
+#include "assertdomjudge.h"
 
 
 using namespace std;
@@ -40,6 +41,7 @@ int main() {
 			// Ver contacto (obtener su nombre)
 			cout << "Numero de telefono del contacto: ";
 			cin >> telefono;
+			assertdomjudge(agenda.existeContacto(telefono));
 			cout << "Nombre: " << agenda.getContacto(telefono) << endl;
 			break;
 		case 'A':

@@ -1,9 +1,6 @@
 #include "Agenda.h"
 #include "assertdomjudge.h"
 
-int funcHash(int capacidad, long telefono){
-    return telefono%capacidad;
-}
 
 Agenda::Agenda(int cantidad){
     this->capacidad = cantidad;
@@ -18,11 +15,11 @@ Agenda::~Agenda(){
 }
 
 int Agenda::obtenerPosicion(long telefono){
-    return funcHash(this->capacidad, telefono);
+    return telefono%capacidad;
 }
 
 bool Agenda::existeContacto(long telefono){
-    int index = funcHash(this->capacidad, telefono);
+    int index = obtenerPosicion(telefono);
     int nNodos = tabla[index].getN();
 
     for(int i=0; i<nNodos; i++)
@@ -31,7 +28,7 @@ bool Agenda::existeContacto(long telefono){
 }
 
 string Agenda::getContacto(long telefono){
-    int index = funcHash(this->capacidad, telefono);
+    int index = obtenerPosicion(telefono);
     int nNodos = tabla[index].getN();
     Contacto temp;
 
@@ -44,7 +41,7 @@ string Agenda::getContacto(long telefono){
 }
 
 void Agenda::introducirContacto(long telefono, string contacto){
-    int index = funcHash(this->capacidad, telefono);
+    int index = obtenerPosicion(telefono);
     int nNodos = tabla[index].getN();
 
     Contacto nuevoContacto;
@@ -58,7 +55,7 @@ void Agenda::introducirContacto(long telefono, string contacto){
 void Agenda::eliminarContacto(long telefono){
     assertdomjudge(this->existeContacto(telefono))
 
-    int index = funcHash(this->capacidad, telefono);
+    int index = obtenerPosicion(telefono);
     int nNodos = tabla[index].getN();
 
     Contacto contactoElim;

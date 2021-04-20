@@ -4,7 +4,7 @@
 class Agenda{
     int capacidad;
     int n;
-    string *nombres;
+    std::string *nombres;
     long *telefonos;
     bool *vacias;
     bool *borradas;
@@ -18,8 +18,8 @@ class Agenda{
     int buscarHueco(long telefono);
     bool isLlena();
     bool existeContacto(long telefono);
-    string getContacto(long telefono);
-    void introducirContacto(long telefono, string contacto);
+    std::string getContacto(long telefono);
+    void introducirContacto(long telefono, std::string contacto);
     void eliminarContacto(long telefono);
     void imprimir();
 };

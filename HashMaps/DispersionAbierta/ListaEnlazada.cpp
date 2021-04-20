@@ -7,10 +7,6 @@ Nodo* ListaEnlazada::getNodo(int posicion){
     Nodo *temp;
     temp = lista;
 
-    if(this->posicionUltimoNodoAccedido == posicion) return this->punteroUltimoNodoAccedido;
-    else if(this->posicionUltimoNodoAccedido+1 == posicion) return this->punteroUltimoNodoAccedido->siguienteNodo;
-    else if(this->posicionUltimoNodoAccedido-1 == posicion) return this->punteroUltimoNodoAccedido->anteriorNodo;
-
     if(posicion>n/2){
         for(int i=0; i<n-posicion; i++)
             temp = temp->anteriorNodo;
@@ -29,14 +25,32 @@ ListaEnlazada::ListaEnlazada(){
     this->lista = NULL;
     this->n = 0;
     this->punteroUltimoNodoAccedido = NULL;
+    this->posicionUltimoNodoAccedido = 0;
 }
 
 ListaEnlazada::~ListaEnlazada(){
+    Nodo *temp;
+    
+    while(lista!=NULL){
+        temp = lista;
+        lista = lista->siguienteNodo;
+        delete temp;
+    }
 
 }
 
 Contacto ListaEnlazada::getValor(int posicion){
     assertdomjudge(posicion > -1 && posicion < this->n);
+    if(this->posicionUltimoNodoAccedido == posicion) return punteroUltimoNodoAccedido->elemento;
+    else if(this->posicionUltimoNodoAccedido+1 == posicion){
+        posicionUltimoNodoAccedido++;
+        punteroUltimoNodoAccedido = punteroUltimoNodoAccedido->siguienteNodo;
+        return punteroUltimoNodoAccedido->elemento;
+    }else if(this->posicionUltimoNodoAccedido-1 == posicion){
+        posicionUltimoNodoAccedido--;
+        punteroUltimoNodoAccedido = punteroUltimoNodoAccedido->anteriorNodo;
+        return punteroUltimoNodoAccedido->elemento;
+    }
     return getNodo(posicion)->elemento;
 }
 
@@ -54,47 +68,32 @@ void ListaEnlazada::insertar(int posicion, Contacto nuevoValor){
     Nodo *nuevoContacto = new Nodo();
     nuevoContacto->elemento = nuevoValor;
 
-    
-
-    if(this->n==0){
-        this->lista = nuevoContacto;
-        nuevoContacto->anteriorNodo = nuevoContacto;
+    if(n==0){
+        lista = nuevoContacto;
         nuevoContacto->siguienteNodo = nuevoContacto;
-
-        posicionUltimoNodoAccedido = 0;
+        nuevoContacto->anteriorNodo = nuevoContacto;
         punteroUltimoNodoAccedido = nuevoContacto;
-    }else if(posicion==0){
-        nuevoContacto->siguienteNodo = getNodo(posicion);
-        nuevoContacto->anteriorNodo = this->punteroUltimoNodoAccedido->anteriorNodo;
-        this->punteroUltimoNodoAccedido->anteriorNodo->siguienteNodo = nuevoContacto;
-        this->punteroUltimoNodoAccedido->anteriorNodo = nuevoContacto;
-        this->lista = nuevoContacto;
     }else{
-        nuevoContacto->anteriorNodo = getNodo(posicion-1);
-        nuevoContacto->siguienteNodo = this->punteroUltimoNodoAccedido->siguienteNodo;
-        this->punteroUltimoNodoAccedido->siguienteNodo->anteriorNodo = nuevoContacto;
-        this->punteroUltimoNodoAccedido->siguienteNodo = nuevoContacto;
-    }
+            nuevoContacto->siguienteNodo = getNodo(posicion);
+            nuevoContacto->anteriorNodo = punteroUltimoNodoAccedido->anteriorNodo;
+            punteroUltimoNodoAccedido->anteriorNodo = nuevoContacto;
+            nuevoContacto->anteriorNodo->siguienteNodo = nuevoContacto;
 
-    if(this->posicionUltimoNodoAccedido == posicion){
-        //Hago un reset
-        this->punteroUltimoNodoAccedido = lista;
-        this->posicionUltimoNodoAccedido = 0;
+            if(posicion == 0) lista = nuevoContacto;
+            if(posicion == this->posicionUltimoNodoAccedido) punteroUltimoNodoAccedido = nuevoContacto;
     }
 
     this->n++;
-
 }
 
-void ListaEnlazada::eliminar(int posicion){
+void ListaEnlazada::eliminar(int posicion){ //Rehacer
     assertdomjudge(posicion > -1 && posicion < this->n);
     Nodo *temp = getNodo(posicion);
 
     temp->anteriorNodo->siguienteNodo = temp->siguienteNodo;
-
     temp->siguienteNodo->anteriorNodo = temp->anteriorNodo;
-    
-    if(posicion==0) lista = this->punteroUltimoNodoAccedido;
+
+    if(posicion == 0) lista = temp->siguienteNodo;
 
     delete temp;
 
@@ -103,8 +102,8 @@ void ListaEnlazada::eliminar(int posicion){
 
 int ListaEnlazada::buscar(Contacto elementoABuscar){
     Nodo *tempNodo;
-    Contacto tempContacto;
     tempNodo = lista;
+    Contacto tempContacto;
 
     for(int i=0; i<n; i++){
         tempContacto = tempNodo->elemento;
