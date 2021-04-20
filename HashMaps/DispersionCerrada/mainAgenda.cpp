@@ -28,7 +28,7 @@ int main() {
 			agenda.imprimir();
 			break;
 		case 'C':
-			// Comprobar si está un contacto
+			// Comprobar si estï¿½ un contacto
 			cout << "Numero de telefono del contacto ";
 			cin >> telefono;
 			if (agenda.existeContacto(telefono)) 
@@ -43,7 +43,7 @@ int main() {
 			cout << "Nombre: " << agenda.getContacto(telefono) << endl;
 			break;
 		case 'A':
-			// Añadir un contacto
+			// Aï¿½adir un contacto
 			cout << "Numero de telefono del contacto: ";
 			cin >> telefono;
 			cout << "Nombre del contacto: ";

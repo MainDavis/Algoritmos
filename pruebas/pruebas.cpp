@@ -3,14 +3,10 @@ using namespace std;
 
 int main(){
     
-    int a;
+    long n;
+    cin >> n;
 
-    while(true){
-        a++;
-        cout << "[" << a << "]  -> ";
-        system("pause");
-    }
+    cout << n;
 
-    return 0;
 }
 
