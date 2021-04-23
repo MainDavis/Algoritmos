@@ -37,8 +37,8 @@ std::string Agenda::getContacto(long telefono){
 }
 
 void Agenda::introducirContacto(long telefono, std::string contacto){
-    assertdomjudge(telefono < 700000000 && telefono > 599999999);
     int index = this->obtenerPosicion(telefono);
+    assertdomjudge(!ocupada[index]);
     telefonos[index] = telefono;
     nombres[index] = contacto;
     ocupada[index] = true;

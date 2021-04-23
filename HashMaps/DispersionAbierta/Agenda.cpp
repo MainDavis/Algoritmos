@@ -11,7 +11,7 @@ Agenda::Agenda(int cantidad){
 }
 
 Agenda::~Agenda(){
-
+        /* delete [] tabla; */
 }
 
 int Agenda::obtenerPosicion(long telefono){
@@ -42,7 +42,6 @@ string Agenda::getContacto(long telefono){
 
 void Agenda::introducirContacto(long telefono, string contacto){
     int index = obtenerPosicion(telefono);
-    int nNodos = tabla[index].getN();
 
     Contacto nuevoContacto;
     nuevoContacto.nombre = contacto;

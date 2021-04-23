@@ -32,9 +32,9 @@ ListaEnlazada::~ListaEnlazada(){
     Nodo *temp;
     
     while(lista!=NULL){
-        temp = lista;
-        lista = lista->siguienteNodo;
-        delete temp;
+        temp = lista->siguienteNodo;
+        delete lista;
+        lista = temp;
     }
 
 }
@@ -115,5 +115,19 @@ int ListaEnlazada::buscar(Contacto elementoABuscar){
 }
 
 void ListaEnlazada::concatenar(ListaEnlazada *listaAConcatenar){
+    Nodo *temp = lista->anteriorNodo;
+    Nodo *cpy = NULL;
 
+    for(int i=0; i<listaAConcatenar->getN(); i++){
+        cpy = new Nodo();
+        cpy->elemento = listaAConcatenar->getValor(i);
+
+        cpy->anteriorNodo = temp;
+        temp->siguienteNodo = cpy;
+        
+        temp = cpy;
+        this->n++;       
+    }
+
+    cpy->siguienteNodo = lista;       
 }
