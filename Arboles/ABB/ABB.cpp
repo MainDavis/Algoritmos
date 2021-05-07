@@ -92,17 +92,6 @@ Nodo* ABB::buscarHueco(Nodo *raizSubarbol, int elementoAInsertar){
     return (raizSubarbol->hijoDerecho != NULL) ? buscarHueco(raizSubarbol->hijoDerecho, elementoAInsertar) : raizSubarbol;  
 }
 
-void ABB::eliminarSubarbol(Nodo *raizSubarbol){
-  if(raizSubarbol->hijoIzquierdo != NULL) eliminarSubarbol(raizSubarbol->hijoIzquierdo);
-  if(raizSubarbol->hijoDerecho != NULL) eliminarSubarbol(raizSubarbol->hijoDerecho);
-  (raizSubarbol->padre->hijoIzquierdo == raizSubarbol) ? raizSubarbol->padre->hijoIzquierdo = NULL : raizSubarbol->padre->hijoDerecho = NULL;
-  delete raizSubarbol;
-}
-
-Nodo* ABB::buscar(int elementoABuscar){
-  return (n > 0) ? buscarRecursivo(this->raiz, elementoABuscar) : NULL;
-}
-
 Nodo* ABB::buscarRecursivo(Nodo *raizSubarbol, int elementoABuscar){
   Nodo *temp;
   if(raizSubarbol->contenido == elementoABuscar) return raizSubarbol;
@@ -116,6 +105,10 @@ Nodo* ABB::buscarRecursivo(Nodo *raizSubarbol, int elementoABuscar){
     if(temp != NULL) return temp;
   }
   return NULL;
+}
+
+Nodo* ABB::buscar(int elementoABuscar){
+  return (n > 0) ? buscarRecursivo(this->raiz, elementoABuscar) : NULL;
 }
 
 Nodo* ABB::buscarMaximo(Nodo *raizSubarbol){
@@ -143,6 +136,7 @@ int ABB::alturaNodo(Nodo *raizSubarbol){
 void ABB::eliminar(int elementoAEliminar){
   this->n--;
   Nodo *nodoAEliminar = buscar(elementoAEliminar);
+  assertdomjudge(nodoAEliminar!=NULL); //Tiene que existir el nodo
   if(n==0){
       delete nodoAEliminar;
       raiz = NULL;
@@ -150,8 +144,7 @@ void ABB::eliminar(int elementoAEliminar){
       (nodoAEliminar->padre->hijoIzquierdo == nodoAEliminar) ? nodoAEliminar->padre->hijoIzquierdo = NULL : nodoAEliminar->padre->hijoDerecho = NULL;
       delete nodoAEliminar;
   }
-  else
-    eliminarNodo(nodoAEliminar);
+  else eliminarNodo(nodoAEliminar);
 }
 
 void ABB::eliminarNodo(Nodo *nodoParaEliminar){
@@ -186,6 +179,13 @@ void ABB::eliminarNodo(Nodo *nodoParaEliminar){
   }
 }
 
+void ABB::eliminarSubarbol(Nodo *raizSubarbol){
+  if(raizSubarbol->hijoIzquierdo != NULL) eliminarSubarbol(raizSubarbol->hijoIzquierdo);
+  if(raizSubarbol->hijoDerecho != NULL) eliminarSubarbol(raizSubarbol->hijoDerecho);
+  (raizSubarbol->padre->hijoIzquierdo == raizSubarbol) ? raizSubarbol->padre->hijoIzquierdo = NULL : raizSubarbol->padre->hijoDerecho = NULL;
+  delete raizSubarbol;
+}
+
 bool ABB::esABB(){
   return (this->raiz != NULL) ? esSubABB(this->raiz) : true;
 }
@@ -202,11 +202,11 @@ bool ABB::esSubABB(Nodo *raizSubarbol){
 }
 
 bool ABB::esAVL(){
+  if(!esABB()) return false;
   return (this->raiz != NULL) ? esSubAVL(this->raiz) : true;
 }
 
 bool ABB::esSubAVL(Nodo *raizSubarbol){
-  if(!esABB()) return false;
 
   int alturaIzquierda=0, alturaDerecha=0, diferencia;
   bool AVLIzquierda, AVLDerecha;
