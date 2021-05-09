@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\David\Desktop\GIT\Repositorios\Algoritmos\pruebas\Debugg\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\David\Desktop\GIT\Repositorios\Algoritmos\pruebas\Debugg\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{C53A322F-9981-34CD-9FA8-AC3FCDE3CE64}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

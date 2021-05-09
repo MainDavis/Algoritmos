@@ -1,0 +1,9 @@
+C:/Users/David/Desktop/GIT/Repositorios/Algoritmos/pruebas/Debugg/build/CMakeFiles/pruebaDebug.dir
+C:/Users/David/Desktop/GIT/Repositorios/Algoritmos/pruebas/Debugg/build/CMakeFiles/NightlyMemoryCheck.dir
+C:/Users/David/Desktop/GIT/Repositorios/Algoritmos/pruebas/Debugg/build/CMakeFiles/Experimental.dir
+C:/Users/David/Desktop/GIT/Repositorios/Algoritmos/pruebas/Debugg/build/CMakeFiles/Continuous.dir
+C:/Users/David/Desktop/GIT/Repositorios/Algoritmos/pruebas/Debugg/build/CMakeFiles/Nightly.dir
+C:/Users/David/Desktop/GIT/Repositorios/Algoritmos/pruebas/Debugg/build/CMakeFiles/PACKAGE.dir
+C:/Users/David/Desktop/GIT/Repositorios/Algoritmos/pruebas/Debugg/build/CMakeFiles/RUN_TESTS.dir
+C:/Users/David/Desktop/GIT/Repositorios/Algoritmos/pruebas/Debugg/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/David/Desktop/GIT/Repositorios/Algoritmos/pruebas/Debugg/build/CMakeFiles/ZERO_CHECK.dir
