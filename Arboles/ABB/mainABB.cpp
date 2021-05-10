@@ -11,7 +11,6 @@ int main()
   
   ABB *arbol=NULL;
     
-    
   do
     {
       cin >> opcion;
@@ -52,7 +51,7 @@ int main()
 	  cout<<"NO"<<endl;	
 	break;
       case 'A':
-	// Añadir un numero
+	// Aï¿½adir un numero
 	cout<<"Anadir numero"<<endl;
 	cin >> numero;
 	arbol->insertar(numero);
