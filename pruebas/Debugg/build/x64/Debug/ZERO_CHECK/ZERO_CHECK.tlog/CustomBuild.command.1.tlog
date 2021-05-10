@@ -1,0 +1,10 @@
+^C:\USERS\DAVID\DESKTOP\GIT\REPOSITORIOS\ALGORITMOS\PRUEBAS\DEBUGG\BUILD\CMAKEFILES\DE5D144E183FB00EB2D68E8FED44690B\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/David/Desktop/GIT/Repositorios/Algoritmos/pruebas/Debugg -BC:/Users/David/Desktop/GIT/Repositorios/Algoritmos/pruebas/Debugg/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/David/Desktop/GIT/Repositorios/Algoritmos/pruebas/Debugg/build/pruebaDebug.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -17,8 +17,9 @@ int main()
       
       switch (opcion) {
       case 'N':
-	cout<<"Creando nuevo ABB"<<endl;
-	arbol=new ABB();
+		cout<<"Creando nuevo ABB"<<endl;
+		arbol=new ABB();
+		break;
       case 'I':
 	arbol->imprimir();
 	cout<<endl;
