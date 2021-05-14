@@ -5,7 +5,7 @@
 using namespace std;
 
 void escribir(int c, int v);
-void permutar(string str, int posMitad, int posFinal);
+void permutacion(string arr, int lenN, int lenO, int nC, int nV, string padre);
 
 int main(){
     int nCasos, nC, nV;
@@ -14,6 +14,7 @@ int main(){
     for(int i=0; i<nCasos; i++){
         cin >> nC; cin >> nV;
         escribir(nC,nV);
+        cout << "\n";
     }
 
     return 0;
@@ -21,29 +22,54 @@ int main(){
 
 void escribir(int c, int v){
     int total = c+v;
-    char arr[total];
-    
+    string arr = "";
+
     for(int i=0; i<c; i++)
-        arr[i] = 'C';
-    for(int i=c; i<total; i++){
-        arr[i] = 'V';
+        arr.push_back('C');
+       
+    for(int i=c; i<total; i++)
+        arr.push_back('V');
+    
+    if(c == 0 || v == 0){
+        cout << arr;
+        return;
     }
-    permutar(arr, total/2, total-1);
+
+    string temp;
+    temp = arr;
+    temp[c] = 'C'; 
+
+    arr.erase(0,1);
+    temp.erase(0,1);
+
+    string padreC="", padreV="";
+    padreC.push_back('C');
+    padreV.push_back('V');
+    permutacion(arr, total-1, total, c-1, v, padreC);
+    permutacion(temp, total-1, total, c, v-1, padreV);
+    
 }
 
-void permutar(string str, int posMitad, int posFinal) {
-    static int count;
-    if (posMitad == posFinal) { 
-        cout << " " << str;
-        return ;
-    } else {
-        for (int i = posMitad; i <= posFinal; i++) {
-            cout << "[" << posMitad << ", " << i << "]"; 
-            swap(str[posMitad], str[i]);
-            permutar(str, posMitad + 1, posFinal);
-            swap(str[posFinal], str[i]);
-            cout << "[" << posMitad << ", " << i << "]"; 
-        }
+void permutacion(string arr, int lenN, int lenO, int nC, int nV, string padre){
+    
+    if(lenN == 1 || nC == 0 || nV == 0){
+        cout << padre;
+        cout << arr << " ";
+        return;
     }
-}
 
+    string strC, strV;
+
+    strC = arr;
+    strV = arr;
+    strV[nC] = 'C';
+
+    string padreC = padre;
+    string padreV = padre;
+    padreC.push_back('C');
+    padreV.push_back('V');
+
+    permutacion(strC.erase(0,1), lenN-1, lenO, nC-1, nV, padreC);
+
+    permutacion(strV.erase(0,1), lenN-1, lenO, nC, nV-1, padreV);
+}

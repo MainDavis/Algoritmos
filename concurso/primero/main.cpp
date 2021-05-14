@@ -6,28 +6,40 @@
 using namespace std;
 
 int main(){
-    int nNinos, nSalto, *arr, pos;
+    int nNinos, nSalto, pos;
+    bool *siguen;
     cin >> nNinos; cin >> nSalto;
 
-    while (nNinos != 0)
-    {
-        int pos = nSalto;
-        arr = new int[nNinos];
+    while (nNinos != 0){
 
-        for(int i=0; i<nNinos; i++){
-            arr[i] = i+1;
+        siguen = new bool[nNinos];
+        for(int i=0; i<nNinos; i++)
+            siguen[i] = true;
+
+        pos=0;
+        for(int i=0; i<nNinos-1; i++){
+            //Primero me pongo en el siguiente libre
+            while(!siguen[pos]){
+                pos++;
+                if(pos>=nNinos) pos-=nNinos;
+            }
+            //Ahora hago los saltos
+            int j=0;
+            while(j<nSalto){
+                pos++;
+                if(pos>=nNinos) pos-=nNinos;
+                if(siguen[pos]) j++;
+            }
+            siguen[pos] = false;
         }
-    
-        while(nNinos!=1){
-            //Elimino
-            if(pos>=nNinos) pos = (pos)-nNinos;
-            if(pos<nNinos-1)memmove(arr+pos,arr+pos+1, sizeof(int)*nNinos-pos-2);
-            nNinos--;
-            pos+=nSalto;
-        }
-        cout << arr[0] << "\n";
+
+        int j=0;
+        while(!siguen[j]){ j++; };
+        cout <<j+1 <<"\n";
+
         cin >> nNinos; cin >> nSalto;
-        delete [] arr;
     }
+
+    return 0;
 }
 
